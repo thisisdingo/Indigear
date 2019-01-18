@@ -30,6 +30,7 @@ public class Indigear {
         var urlRequest = URLRequest(url: url)
         urlRequest.allHTTPHeaderFields = headers
         urlRequest.httpBody = body
+        urlRequest.httpMethod = method.rawValue
         
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             var result = IndigearResult()
@@ -54,6 +55,21 @@ public class Indigear {
     
     // MARK : Public methods
 
+    
+    public static func run(_ url : String, method : HTTPMethod = .get, headers : IndigearHeader? = nil, body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void){
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: method, headers, bodyData, completion)
+    }
+    
     public static func post(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
         
         guard let fullUrl = URL(string: url) else {
@@ -63,28 +79,9 @@ public class Indigear {
             return
         }
         
-        var postBody : Data? = nil
+        let bodyData : Data? = convertToData(body)
         
-        if let parameters = body as? [String : String] {
-            
-            var postBodyQuery = String()
-            
-            for key in parameters.keys {
-                if postBodyQuery.isEmpty {
-                    postBodyQuery = "\(key)=\(parameters[key]!)"
-                } else {
-                    postBodyQuery += "&\(key)=\(parameters[key]!)"
-                }
-            }
-            
-            postBody = postBodyQuery.data(using: .utf8)
-        } else if let data = body as? Data {
-            postBody = data
-        } else if let data = body as? String {
-            postBody = data.data(using: .utf8)
-        }
-        
-        Indigear.sharedInstance.request(fullUrl, method: .post, headers, postBody, completion)
+        Indigear.sharedInstance.request(fullUrl, method: .post, headers, bodyData, completion)
     }
     
     public static func get(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
@@ -96,26 +93,41 @@ public class Indigear {
             return
         }
         
-        var getBody : Data? = nil
-        
-        if let parameters = body as? [String : String] {
-            
-            var bodyQuery = String()
-            
-            for key in parameters.keys {
-                if bodyQuery.isEmpty {
-                    bodyQuery = "\(key)=\(parameters[key]!)"
-                } else {
-                    bodyQuery += "&\(key)=\(parameters[key]!)"
-                }
-            }
-            
-            getBody = bodyQuery.data(using: .utf8)
-        }
-        
-        Indigear.sharedInstance.request(fullUrl, method: .get, headers, getBody, completion)
+        let bodyData : Data? = convertToData(body)
+
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
     }
     
+    public static func head(){
+        
+    }
+}
+
+fileprivate func convertToData(_ body : Any?) -> Data? {
+   
+    if body == nil { return nil }
+    
+    var postBody : Data? = nil
+    
+    if let parameters = body as? [String : String] {
+        
+        var postBodyQuery = String()
+        
+        for key in parameters.keys {
+            if postBodyQuery.isEmpty {
+                postBodyQuery = "\(key)=\(parameters[key]!)"
+            } else {
+                postBodyQuery += "&\(key)=\(parameters[key]!)"
+            }
+        }
+        postBody = postBodyQuery.data(using: .utf8)
+    } else if let data = body as? Data {
+        postBody = data
+    } else if let data = body as? String {
+        postBody = data.data(using: .utf8)
+    }
+    
+    return postBody
 }
 
 class IndigearError : Error {

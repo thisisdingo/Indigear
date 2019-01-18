@@ -6,7 +6,13 @@
 //  Copyright © 2019 Michil. All rights reserved.
 //
 
-enum HTTPMethod : String {
+public enum HTTPMethod : String {
     case post = "POST"
+    case head = "HEAD"
     case get = "GET"
+    case put = "PUT"
+    case delete = "DELETE"
+    case connect = "CONNECT"
+    case options = "OPTIONS"
+    case trace = "TRACE"
 }
