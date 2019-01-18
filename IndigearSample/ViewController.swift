@@ -14,19 +14,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        Indigear.post("ajsdhk://sdafdsaf") { [weak self] result in
-            
+        Indigear.run(Constants.API_URL, method: .get) { result in
             if result.isSuccess {
-                print(result.result!)
+                print("Fetched data: ", String(data: result.result!, encoding: .utf8) ?? "")
             }else{
-                print(result.error!.localizedDescription)
+                print("Error: ", result.error!.localizedDescription)
             }
-            
         }
-        
     }
-
-
 }
 
