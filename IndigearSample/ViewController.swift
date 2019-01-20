@@ -14,9 +14,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Indigear.run(Constants.API_URL, method: .get) { result in
+        let header : IndigearHeader = ["User-Agent" : "Your Awesome Application"]
+        let params = ["param1" : "value1"]
+        
+        let requestURL = Constants.API_URL + "?getparam1=value1&getparam=value2"
+        
+        Indigear.run(requestURL, method: .post, headers: header, body: params) { result in
             if result.isSuccess {
-                print("Fetched data: ", String(data: result.result!, encoding: .utf8) ?? "")
+                do {
+                    let result = try JSONSerialization.jsonObject(with: result.result!, options: []) as! [String : Any]
+                    
+                    print("Request POST parameters: ", result["POST"] ?? "")
+                    print("Request GET parameters: ", result["GET"] ?? "")
+                    print("Request HEADERS: ", result["HEADERS"] ?? "")
+                    
+                } catch {
+                    print(error)
+                }
+                
             }else{
                 print("Error: ", result.error!.localizedDescription)
             }
