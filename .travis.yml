@@ -2,4 +2,4 @@ osx_image: xcode10.1
 language: swift
 xcode_project: Indigear.xcodeproj # path to your xcodeproj folder
 xcode_scheme: IndigearTests
-xcode_destination: platform=iOS Simulator,name=iPad Pro (9.7 inch),OS=10.3
+xcode_destination: platform=iOS Simulator,name=iPad Pro (9.7 inch),OS=12.1
