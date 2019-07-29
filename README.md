@@ -1,5 +1,5 @@
 # Indigear
-![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg) [![Swift 4.2](http://img.shields.io/badge/swift-4.2-brightgreen.svg)](https://swift.org/)
+![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg) [![Swift 5.0](http://img.shields.io/badge/swift-5.0-brightgreen.svg)](https://swift.org/)
 
 Indigear is simple library for working with HTTP(s) connections
 
