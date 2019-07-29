@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6537D88A22EF8420006F16A5 /* IndigearError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6537D88922EF8420006F16A5 /* IndigearError.swift */; };
 		CE0BE62B21EB833800499D46 /* Indigear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0BE62121EB833800499D46 /* Indigear.framework */; };
 		CE0BE63021EB833800499D46 /* IndigearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0BE62F21EB833800499D46 /* IndigearTests.swift */; };
 		CE0BE63221EB833800499D46 /* Indigear.h in Headers */ = {isa = PBXBuildFile; fileRef = CE0BE62421EB833800499D46 /* Indigear.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6537D88922EF8420006F16A5 /* IndigearError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndigearError.swift; sourceTree = "<group>"; };
 		CE0BE62121EB833800499D46 /* Indigear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Indigear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BE62421EB833800499D46 /* Indigear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Indigear.h; sourceTree = "<group>"; };
 		CE0BE62521EB833800499D46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				CE0BE63B21EB834800499D46 /* Indigear.swift */,
 				CE0BE63D21EB83E400499D46 /* HTTPMethod.swift */,
 				CEB8370121F266A900C62D5A /* IndigearResult.swift */,
+				6537D88922EF8420006F16A5 /* IndigearError.swift */,
 			);
 			path = Indigear;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				CEB8370221F266A900C62D5A /* IndigearResult.swift in Sources */,
 				CE0BE63C21EB834800499D46 /* Indigear.swift in Sources */,
 				CE0BE63E21EB83E400499D46 /* HTTPMethod.swift in Sources */,
+				6537D88A22EF8420006F16A5 /* IndigearError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +484,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -505,7 +509,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.michil.Indigear;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -524,7 +528,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.michil.IndigearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -543,7 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.michil.IndigearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -561,7 +565,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.michil.IndigearSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -579,7 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.michil.IndigearSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

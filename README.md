@@ -13,7 +13,7 @@ Installing.
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'Indigear'
+pod 'Indigear', :git => 'https://github.com/thisisdingo/Indigear.git'
 ```
 
 ### Usage

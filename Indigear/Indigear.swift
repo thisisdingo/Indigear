@@ -51,60 +51,9 @@ public class Indigear {
             task.resume()
         }
     }
-    
-    
-    // MARK : Public methods
-
-    
-    public static func run(_ url : String, method : HTTPMethod = .get, headers : IndigearHeader? = nil, body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void){
-        
-        guard let fullUrl = URL(string: url) else {
-            var result = IndigearResult()
-            result.error = IndigearError("URL: \(url) have invalid format")
-            completion(result)
-            return
-        }
-        
-        let bodyData : Data? = convertToData(body)
-        
-        Indigear.sharedInstance.request(fullUrl, method: method, headers, bodyData, completion)
-    }
-    
-    public static func post(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
-        
-        guard let fullUrl = URL(string: url) else {
-            var result = IndigearResult()
-            result.error = IndigearError("URL: \(url) have invalid format")
-            completion(result)
-            return
-        }
-        
-        let bodyData : Data? = convertToData(body)
-        
-        Indigear.sharedInstance.request(fullUrl, method: .post, headers, bodyData, completion)
-    }
-    
-    public static func get(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
-        
-        guard let fullUrl = URL(string: url) else {
-            var result = IndigearResult()
-            result.error = IndigearError("URL: \(url) have invalid format")
-            completion(result)
-            return
-        }
-        
-        let bodyData : Data? = convertToData(body)
-
-        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
-    }
-    
-    public static func head(){
-        
-    }
 }
 
 fileprivate func convertToData(_ body : Any?) -> Data? {
-   
     if body == nil { return nil }
     
     var postBody : Data? = nil
@@ -130,17 +79,135 @@ fileprivate func convertToData(_ body : Any?) -> Data? {
     return postBody
 }
 
-class IndigearError : Error {
+
+// MARK : Public
+public extension Indigear {
     
-    var description = String()
-    
-    init(_ withDescription : String) {
-        self.description = withDescription
+    // MARK : Public methods
+    static func run(_ url : String, method : HTTPMethod = .get, headers : IndigearHeader? = nil, body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void){
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: method, headers, bodyData, completion)
     }
     
-    
-    var localizedDescription: String {
-        return description
+    static func post(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .post, headers, bodyData, completion)
     }
     
+    static func get(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
+    }
+    
+    static func head(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
+    }
+    
+    static func put(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
+    }
+    
+    static func delete(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
+    }
+    
+    static func connect(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
+    }
+    
+    static func options(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
+    }
+    
+    static func trace(_ url : String, _ headers : IndigearHeader? = nil, _ body : Any? = nil, _ completion : @escaping(_ result : IndigearResult) -> Void) {
+        
+        guard let fullUrl = URL(string: url) else {
+            var result = IndigearResult()
+            result.error = IndigearError("URL: \(url) have invalid format")
+            completion(result)
+            return
+        }
+        
+        let bodyData : Data? = convertToData(body)
+        
+        Indigear.sharedInstance.request(fullUrl, method: .get, headers, bodyData, completion)
+    }
 }
+
